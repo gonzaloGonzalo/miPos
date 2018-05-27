@@ -16,4 +16,5 @@ indexer/gradlew
 indexer/.gradle/*
 indexer/gradle/*
 
-
+indexer/paho*
+indexer/build/*

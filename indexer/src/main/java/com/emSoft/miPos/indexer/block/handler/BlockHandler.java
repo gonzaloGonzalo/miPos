@@ -1,5 +1,7 @@
 package com.emSoft.miPos.indexer.block.handler;
 
+import com.emSoft.miPos.indexer.block.consumer.BrokerConsumer;
+import com.emSoft.miPos.indexer.block.consumer.mosquittoConsumer.MqttConsumer;
 import com.emSoft.miPos.indexer.block.handler.visitor.BlockHelper;
 import com.emSoft.miPos.indexer.block.handler.visitor.BlockVisitor;
 import com.emSoft.miPos.indexer.block.handler.visitor.impl.BlockVisitorImpl;
@@ -13,14 +15,8 @@ import java.util.Map;
  */
 public class BlockHandler {
 
-    public static void main(String args[]){
-        BlockVisitor blockVisitor = new BlockVisitorImpl();
-        Map<String, String> block = new HashMap<>();
-        block.put("event", "road map check");
-        Block blck = BlockHelper.build(block);
-        blck.accept(blockVisitor);
+    public static void main(String args[])throws Exception{
+        BrokerConsumer brokerConsumer = new MqttConsumer();
+        brokerConsumer.consume();
     }
-
-
-
 }
