@@ -4,21 +4,24 @@ import com.emSoft.miPos.indexer.block.handler.visitor.BlockVisitor;
 import com.emSoft.miPos.indexer.block.model.DriverBlock;
 import com.emSoft.miPos.indexer.block.model.RoadMapBlock;
 import com.emSoft.miPos.indexer.block.model.VehicleBlock;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 /**
  * Created by computer on 23/05/18.
  */
 public class BlockVisitorImpl implements BlockVisitor {
+    private static final Logger LOGGER = Logger.getLogger(BlockVisitorImpl.class.getName());
 
     public void visit(DriverBlock driverBlock){
-        System.out.println(driverBlock.getClass().getCanonicalName());
+        LOGGER.log(Level.INFO, driverBlock.getClass().getCanonicalName());
     }
 
     public void visit(VehicleBlock vehicleBlock){
-        System.out.println(vehicleBlock.getClass().getCanonicalName());
+        LOGGER.log(Level.INFO, vehicleBlock.getClass().getCanonicalName());
     }
 
     public void visit(RoadMapBlock roadMapBlock){
-        System.out.println(roadMapBlock.getClass().getCanonicalName());
+        LOGGER.log(Level.INFO, roadMapBlock.getClass().getCanonicalName());
     }
 }
