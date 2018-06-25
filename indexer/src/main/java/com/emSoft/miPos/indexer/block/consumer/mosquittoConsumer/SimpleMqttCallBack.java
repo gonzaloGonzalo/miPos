@@ -29,11 +29,13 @@ public class SimpleMqttCallBack implements MqttCallback {
       String message = new String(mqttMessage.getPayload());
       LOGGER.log(Level.INFO, "Message received:\t"+ message);
       BlockVisitor blockVisitor = new BlockVisitorImpl();
-      Block blck = BlockContext.build(getEventType(message));
+      Map<String, String> messageMap = getMessageMapFromMessage(message);
+      Block blck = BlockContext.build(getEventTypeFromMap(messageMap));
+      blck.mapValues(messageMap);
       blck.accept(blockVisitor);
     }
     catch (Exception ex){
-      LOGGER.log(Level.INFO, "Message not received:\t"+ ex.getMessage());
+      LOGGER.log(Level.INFO, "Message not processed:\t"+ ex.getMessage());
     }
 
   }
@@ -41,10 +43,14 @@ public class SimpleMqttCallBack implements MqttCallback {
   public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
   }
 
-  private String getEventType(String message){
-    Type type = new TypeToken<Map<String, String>>(){}.getType();
-    Map<String, String> messageMap = new Gson().fromJson(message, type);
+  private String getEventTypeFromMap(Map<String, String> messageMap){
     String event = messageMap.get("event");
     return event;
+  }
+
+  private Map<String, String> getMessageMapFromMessage(String message){
+    Type type = new TypeToken<Map<String, String>>(){}.getType();
+    Map<String, String> messageMap = new Gson().fromJson(message, type);
+    return messageMap;
   }
 }

@@ -1,5 +1,7 @@
 package com.emSoft.miPos.indexer.block.model;
 
+import javax.persistence.*;
+
 /**
  * Created by computer on 23/05/18.
  */

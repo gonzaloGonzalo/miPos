@@ -4,6 +4,8 @@ import com.emSoft.miPos.indexer.block.handler.visitor.BlockVisitor;
 import com.emSoft.miPos.indexer.block.model.DriverBlock;
 import com.emSoft.miPos.indexer.block.model.RoadMapBlock;
 import com.emSoft.miPos.indexer.block.model.VehicleBlock;
+import com.emSoft.miPos.indexer.block.persistence.BlockDAO;
+import com.emSoft.miPos.indexer.block.persistence.DriverBlockDAOImpl;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
@@ -15,6 +17,8 @@ public class BlockVisitorImpl implements BlockVisitor {
 
     public void visit(DriverBlock driverBlock){
         LOGGER.log(Level.INFO, driverBlock.getClass().getCanonicalName());
+        BlockDAO driverDAO = new DriverBlockDAOImpl();
+        driverDAO.create(driverBlock);
     }
 
     public void visit(VehicleBlock vehicleBlock){

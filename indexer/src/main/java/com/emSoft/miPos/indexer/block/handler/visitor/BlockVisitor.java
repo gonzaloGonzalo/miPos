@@ -3,6 +3,7 @@ package com.emSoft.miPos.indexer.block.handler.visitor;
 import com.emSoft.miPos.indexer.block.model.DriverBlock;
 import com.emSoft.miPos.indexer.block.model.RoadMapBlock;
 import com.emSoft.miPos.indexer.block.model.VehicleBlock;
+import org.apache.log4j.Logger;
 
 /**
  * Created by computer on 23/05/18.

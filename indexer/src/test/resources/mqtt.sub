@@ -1,0 +1,1 @@
+mosquitto_pub -t 'iot_data' -m '{"event":"driver creation","UUID":"9df76c76-5ed0-11e8-9c2d-fa7ae01bbebc","date":"2007-12-03T10:15:30+01:00[Europe/Paris]"}'
